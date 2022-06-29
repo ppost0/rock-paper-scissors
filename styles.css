@@ -1,7 +1,107 @@
+html, body {
+  margin: 0;
+}
+
+.entiresitewrapper {
+  position:relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .mainsitewrapper {
+  flex: 1 0 0;
+  margin-top: 20px;
+  display: flex;
+  align-items: stretch;
+}
+
+.leftcontainer {
+  flex-grow: 3;
+  padding-left: 10px;
+}
+
+.rightcontainer {
+  flex-grow: 1;
+}
+
+.scoreboard {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.scoreboardtitle,
+.scoreboardsubtitle {
+  align-self: center;
+}
+
+.scoreboardscores {
   display: flex;
 }
 
-div {
-  font-size: 30px;
+.playerScore,
+.computerScore {
+  text-align: center;
+  flex: 1 1 0;
 }
+
+.buttonsrow {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 20px;
+}
+
+.playerchoice {
+  flex: 1 0 0;
+}
+
+.endofmatchdetails {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.resultscontainer {
+  margin-top: 20px;
+  padding-left: 20px;
+}
+
+.matchhistorycontainer {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.matchhistorytitle {
+  text-align: center;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.matchhistorylist {
+  display: flex;
+  margin-top: 10px;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 10px;
+}
+
+
+
+
+
+
+.footer {
+  text-align: center;
+  padding: 10px;
+  color: rgb(241, 233, 233);
+  background-color: rgb(21, 25, 70);
+  font-weight: 400;
+}
+
