@@ -8,18 +8,26 @@
 </head>
 <body>
 
+  <div class="scoreboard">SCORE (First to 5):
+    <div class="playerScore">You:
+      <span class="playerScoreNumber">0</span>
+    </div>
+    <div class="computerScore">Computer:
+      <span class="computerScoreNumber">0</span>
+    </div>
+  </div>
+
+
   <button id="rock">ROCK</button>
   <button id="paper">PAPER</button>
   <button id="scissors">SCISSORS</button>
 
+  <div class="matchoutcome"></div>
+
+
   <div class="resultscontainer">RESULTS:
     <ol class="resultslist"></ol>
   </div>
-
-  <div class="scoreboard">SCORE:
-
-  </div>
-
 
 
   <script>
@@ -29,27 +37,41 @@
     const scissors = document.querySelector('#scissors');
     const resultsList = document.querySelector('.resultslist');
     const scoreboard = document.querySelector('.scoreboard');
+    const playerScoreDisplay = document.querySelector('.playerScore');
+    const computerScoreDisplay = document.querySelector('.computerScore');
+    const playerScoreNumber = document.querySelector('.playerScoreNumber');
+    const computerScoreNumber = document.querySelector('.computerScoreNumber');
+    const matchOutcome = document.querySelector('.matchoutcome');
+
+
+
 
     let playerScore = 0;
     let computerScore = 0;
 
 
+  //runs when player clicks a button
     function playerSelect(selection) {
       const result = document.createElement('li');
       result.textContent = `${playRound(selection)}`;
       if (result.textContent.includes('win')) {
         playerScore++;
+        playerScoreNumber.textContent++;
+        if (playerScore === 5 && playerScore > computerScore) {
+          matchOutcome.textContent = `Victory! You win ${playerScore} to ${computerScore}!`
+        }
       } else if (result.textContent.includes('lose')) {
         computerScore++;
+        computerScoreNumber.textContent++;
+        if (computerScore === 5 && computerScore > playerScore) {
+          matchOutcome.textContent = `Defeat! You lose ${computerScore} to ${playerScore}!`
+        }
       }
       resultsList.appendChild(result);
 
+
       console.log(result.textContent);
     }
-
-
-
-
 
 
     //player selection event listeners
@@ -115,33 +137,13 @@
 
 
 
-    // Run a 5 round game
-    function game() {
-      // let playerScore = 0;
-      // let computerScore = 0;
-
-      //for (var i = 0; i < 5; i++) {
-        let roundMessage = playRound();
-        console.log(roundMessage);
-        if (roundMessage.includes('win')) {
-          playerScore ++;
-        }
-        if (roundMessage.includes('lose')) {
-          computerScore ++;
-        }
-        if (roundMessage.includes('tie')) {
-          return;
-        }
-      //}
-
-      if (playerScore > computerScore) {
-        console.log(`You win! ${playerScore} to ${computerScore}`);
-      } else if (playerScore === computerScore) {
-        console.log(`You tied! ${playerScore} to ${computerScore}`);
-      } else {
-        console.log(`You lose! ${computerScore} to ${playerScore}`);
-      }
-    }
+    // //displaying winner
+    // //if the player wins
+    // if (playerScore === 5) {
+    //   let message = document.createElement('div');
+    //   message.textContent = `Victory! You win ${playerScore} to ${computerScore}!`;
+    //   matchOutcome.appendChild(message);
+    // }
 
 
 
@@ -151,6 +153,33 @@
 
 
 
+    // // Run a 5 round game
+    // function game() {
+    //   // let playerScore = 0;
+    //   // let computerScore = 0;
+
+    //   //for (var i = 0; i < 5; i++) {
+    //     let roundMessage = playRound();
+    //     console.log(roundMessage);
+    //     if (roundMessage.includes('win')) {
+    //       playerScore ++;
+    //     }
+    //     if (roundMessage.includes('lose')) {
+    //       computerScore ++;
+    //     }
+    //     if (roundMessage.includes('tie')) {
+    //       return;
+    //     }
+    //   //}
+
+    //   if (playerScore > computerScore) {
+    //     console.log(`You win! ${playerScore} to ${computerScore}`);
+    //   } else if (playerScore === computerScore) {
+    //     console.log(`You tied! ${playerScore} to ${computerScore}`);
+    //   } else {
+    //     console.log(`You lose! ${computerScore} to ${playerScore}`);
+    //   }
+    // }
 
 
 
