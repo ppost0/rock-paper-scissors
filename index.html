@@ -18,17 +18,21 @@
   </div>
 
 
-  <button id="rock">ROCK</button>
-  <button id="paper">PAPER</button>
-  <button id="scissors">SCISSORS</button>
+  <button class="playerchoice" id="rock">ROCK</button>
+  <button class="playerchoice" id="paper">PAPER</button>
+  <button class="playerchoice" id="scissors">SCISSORS</button>
 
   <div class="matchoutcome"></div>
 
+  <button class="playagainbtn">Play again?</button>
 
-  <div class="resultscontainer">RESULTS:
+  <div class="resultscontainer">ROUND RESULTS:
     <ol class="resultslist"></ol>
   </div>
 
+
+
+  <div class="matchhistory">MATCH HISTORY:</div>
 
   <script>
 
@@ -42,29 +46,37 @@
     const playerScoreNumber = document.querySelector('.playerScoreNumber');
     const computerScoreNumber = document.querySelector('.computerScoreNumber');
     const matchOutcome = document.querySelector('.matchoutcome');
-
-
-
+    const playAgainBtn = document.querySelector('.playagainbtn');
+    const playerChoices = document.querySelectorAll('.playerchoice');
+    const matchHistory = document.querySelector('.matchhistory');
 
     let playerScore = 0;
     let computerScore = 0;
 
+    playAgainBtn.style.visibility = 'hidden';
 
-  //runs when player clicks a button
+
+
+
+  //runs when player makes a choice
     function playerSelect(selection) {
       const result = document.createElement('li');
       result.textContent = `${playRound(selection)}`;
-      if (result.textContent.includes('win')) {
+      if (result.textContent.includes('won')) {
         playerScore++;
         playerScoreNumber.textContent++;
         if (playerScore === 5 && playerScore > computerScore) {
           matchOutcome.textContent = `Victory! You win ${playerScore} to ${computerScore}!`
+          playAgainBtn.style.visibility = 'visible';
+          playerChoices.forEach((choice) => choice.disabled = true);
         }
-      } else if (result.textContent.includes('lose')) {
+      } else if (result.textContent.includes('lost')) {
         computerScore++;
         computerScoreNumber.textContent++;
         if (computerScore === 5 && computerScore > playerScore) {
           matchOutcome.textContent = `Defeat! You lose ${computerScore} to ${playerScore}!`
+          playAgainBtn.style.visibility = 'visible';
+          playerChoices.forEach((choice) => choice.disabled = true);
         }
       }
       resultsList.appendChild(result);
@@ -82,6 +94,9 @@
 
     scissors.addEventListener('click', () => playerSelect('scissors'));
 
+    playAgainBtn.addEventListener('click', () => restartGame());
+
+
 
 
     // Computer's selection
@@ -90,6 +105,8 @@
       let index = Math.floor(Math.random() * 3);
       return options[index];
     }
+
+
 
     // Play out a round between the user and computer
     function playRound(playerSelection, computerSelection) {
@@ -102,50 +119,61 @@
 
       if (playerSelection === 'rock') {
         if (computerSelection === 'rock') {
-          return 'You tie with rock!';
+          return 'Round tied with rock!';
         }
         if (computerSelection === 'paper') {
-          return 'You lose! Paper beats rock';
+          return 'Round lost! Paper beats rock';
         }
         if (computerSelection === 'scissors') {
-          return 'You win! Rock beats scissors';
+          return 'Round won! Rock beats scissors';
         }
       }
       if (playerSelection === 'paper') {
         if (computerSelection === 'rock') {
-          return 'You win! Paper beats rock';
+          return 'Round won! Paper beats rock';
         }
         if (computerSelection === 'paper') {
-          return 'You tie with paper!';
+          return 'Round tied with paper!';
         }
         if (computerSelection === 'scissors') {
-          return 'You lose! Scissors beat paper';
+          return 'Round lost! Scissors beat paper';
         }
       }
       if (playerSelection === 'scissors') {
         if (computerSelection === 'rock') {
-          return 'You lose! Rock beats scissors';
+          return 'Round lost! Rock beats scissors';
         }
         if (computerSelection === 'paper') {
-          return 'You win! Scissors beat paper';
+          return 'Round won! Scissors beat paper';
         }
         if (computerSelection === 'scissors') {
-          return 'You tie with scissors!';
+          return 'Round tied with scissors!';
         }
       }
     }
 
 
 
-    // //displaying winner
-    // //if the player wins
-    // if (playerScore === 5) {
-    //   let message = document.createElement('div');
-    //   message.textContent = `Victory! You win ${playerScore} to ${computerScore}!`;
-    //   matchOutcome.appendChild(message);
-    // }
 
 
+
+    if (playerScore > 4 || computerScore > 4) {
+      playAgainBtn.style.visibility = 'visible';
+    }
+
+
+
+    function restartGame() {
+      playAgainBtn.style.visibility = 'hidden';
+      playerScore = 0;
+      computerScore = 0;
+      playerScoreNumber.textContent = 0;
+      computerScoreNumber.textContent = 0;
+      matchOutcome.textContent = '';
+      resultsList.innerHTML = '';
+      console.clear();
+      playerChoices.forEach((choice) => choice.disabled = false);
+    }
 
 
 
