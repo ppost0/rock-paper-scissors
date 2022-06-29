@@ -7,19 +7,76 @@
   <title>Rock, Paper, Scissors</title>
 </head>
 <body>
+
+  <button id="rock">ROCK</button>
+  <button id="paper">PAPER</button>
+  <button id="scissors">SCISSORS</button>
+
+  <div class="resultscontainer">RESULTS:
+    <ol class="resultslist"></ol>
+  </div>
+
+  <div class="scoreboard">SCORE:
+
+  </div>
+
+
+
   <script>
+
+    const rock = document.querySelector('#rock');
+    const paper = document.querySelector('#paper');
+    const scissors = document.querySelector('#scissors');
+    const resultsList = document.querySelector('.resultslist');
+    const scoreboard = document.querySelector('.scoreboard');
+
+    let playerScore = 0;
+    let computerScore = 0;
+
+
+    function playerSelect(selection) {
+      const result = document.createElement('li');
+      result.textContent = `${playRound(selection)}`;
+      if (result.textContent.includes('win')) {
+        playerScore++;
+      } else if (result.textContent.includes('lose')) {
+        computerScore++;
+      }
+      resultsList.appendChild(result);
+
+      console.log(result.textContent);
+    }
+
+
+
+
+
+
+    //player selection event listeners
+
+    rock.addEventListener('click', () => playerSelect('rock'));
+
+    paper.addEventListener('click', () => playerSelect('paper'));
+
+    scissors.addEventListener('click', () => playerSelect('scissors'));
+
+
+
+    // Computer's selection
     function computerPlay() {
       let options = ['rock', 'paper', 'scissors'];
       let index = Math.floor(Math.random() * 3);
       return options[index];
     }
 
+    // Play out a round between the user and computer
     function playRound(playerSelection, computerSelection) {
-      playerSelection = prompt('Rock, paper, or scissors?').toLowerCase();
+      playerSelection = playerSelection ||
+      prompt('Rock, paper, or scissors?').toLowerCase();
+
       computerSelection = computerPlay();
 
       let options = ['rock', 'paper', 'scissors']
-
 
       if (playerSelection === 'rock') {
         if (computerSelection === 'rock') {
@@ -57,11 +114,13 @@
     }
 
 
-    function game() {
-      let playerScore = 0;
-      let computerScore = 0;
 
-      for (var i = 0; i < 5; i++) {
+    // Run a 5 round game
+    function game() {
+      // let playerScore = 0;
+      // let computerScore = 0;
+
+      //for (var i = 0; i < 5; i++) {
         let roundMessage = playRound();
         console.log(roundMessage);
         if (roundMessage.includes('win')) {
@@ -71,9 +130,9 @@
           computerScore ++;
         }
         if (roundMessage.includes('tie')) {
-          continue;
+          return;
         }
-      }
+      //}
 
       if (playerScore > computerScore) {
         console.log(`You win! ${playerScore} to ${computerScore}`);
@@ -83,7 +142,17 @@
         console.log(`You lose! ${computerScore} to ${playerScore}`);
       }
     }
-    game();
+
+
+
+
+
+
+
+
+
+
+
 
 
   </script>
