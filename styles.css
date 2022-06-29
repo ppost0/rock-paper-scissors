@@ -1,0 +1,7 @@
+.mainsitewrapper {
+  display: flex;
+}
+
+div {
+  font-size: 30px;
+}

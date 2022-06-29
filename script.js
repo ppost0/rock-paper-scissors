@@ -131,7 +131,7 @@ function playRound(playerSelection, computerSelection) {
 
 
 
-//doesnt clear match history
+//will not clear match history
 function restartGame() {
   playAgainBtn.style.visibility = 'hidden';
   playerScore = 0;

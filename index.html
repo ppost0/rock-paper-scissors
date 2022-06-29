@@ -4,40 +4,44 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles.css">
   <title>Rock, Paper, Scissors</title>
 </head>
 <body>
-  <!-- left half -->
-  <div class="leftcontainer">
-    <div class="scoreboard">SCORE (First to 5):
-      <div class="playerScore">You:
-        <span class="playerScoreNumber">0</span>
+  <div class="mainsitewrapper">
+    <!-- left half -->
+    <div class="leftcontainer">
+      <div class="scoreboard">SCORE (First to 5):
+        <div class="playerScore">You:
+          <span class="playerScoreNumber">0</span>
+        </div>
+        <div class="computerScore">Computer:
+          <span class="computerScoreNumber">0</span>
+        </div>
       </div>
-      <div class="computerScore">Computer:
-        <span class="computerScoreNumber">0</span>
+
+      <button class="playerchoice" id="rock">ROCK</button>
+      <button class="playerchoice" id="paper">PAPER</button>
+      <button class="playerchoice" id="scissors">SCISSORS</button>
+
+      <div class="matchoutcome"></div>
+
+      <button class="playagainbtn">Play again?</button>
+
+      <div class="resultscontainer">ROUND RESULTS:
+        <ol class="resultslist"></ol>
       </div>
     </div>
 
-    <button class="playerchoice" id="rock">ROCK</button>
-    <button class="playerchoice" id="paper">PAPER</button>
-    <button class="playerchoice" id="scissors">SCISSORS</button>
 
-    <div class="matchoutcome"></div>
-
-    <button class="playagainbtn">Play again?</button>
-
-    <div class="resultscontainer">ROUND RESULTS:
-      <ol class="resultslist"></ol>
+    <!-- right half -->
+    <div class="rightcontainer">
+      <div class="matchhistorycontainer">
+        <div class="matchhistorytitle">MATCH HISTORY:</div>
+        <ul class="matchhistorylist"></ul>
+      </div>
     </div>
   </div>
-
-
-  <!-- right half -->
-  <div class="matchhistorycontainer">
-    <div class="matchhistorytitle">MATCH HISTORY:</div>
-    <ul class="matchhistorylist"></ul>
-  </div>
-
 
   <script src="script.js"></script>
 </body>
