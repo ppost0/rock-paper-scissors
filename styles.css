@@ -1,5 +1,6 @@
 html, body {
   margin: 0;
+  font-family: Monaco, Copperplate, Verdana, Arial, Helvetica, sans-serif;
 }
 
 .entiresitewrapper {
@@ -36,6 +37,16 @@ html, body {
   align-self: center;
 }
 
+.scoreboardtitle {
+  font-size: 40px;
+  font-weight: 900;
+}
+
+.scoreboardsubtitle {
+  font-size: 12px;
+  font-style: italic;
+}
+
 .scoreboardscores {
   display: flex;
 }
@@ -44,6 +55,7 @@ html, body {
 .computerScore {
   text-align: center;
   flex: 1 1 0;
+  font-weight: 900;
 }
 
 .buttonsrow {
@@ -70,6 +82,10 @@ html, body {
   padding-left: 20px;
 }
 
+.resultstitle {
+  font-size: 20px;
+}
+
 .matchhistorycontainer {
   display: flex;
   flex-flow: column nowrap;
@@ -84,6 +100,11 @@ ul {
   padding: 0;
 }
 
+.matchhistorytitle {
+  font-size: 20px;
+}
+
+
 .matchhistorylist {
   display: flex;
   margin-top: 10px;
@@ -92,12 +113,24 @@ ul {
   gap: 10px;
 }
 
+.matchoutcome {
+  font-size: 40px;
+}
 
+.playagainbtn {
+  font-size: 25px;
+}
 
+.playerchoice {
+  font-size: 30px;
+}
 
 
 
 .footer {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  font-style: italic;
   text-align: center;
   padding: 10px;
   color: rgb(241, 233, 233);
