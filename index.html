@@ -7,32 +7,35 @@
   <title>Rock, Paper, Scissors</title>
 </head>
 <body>
-
-  <div class="scoreboard">SCORE (First to 5):
-    <div class="playerScore">You:
-      <span class="playerScoreNumber">0</span>
+  <!-- left half -->
+  <div>
+    <div class="scoreboard">SCORE (First to 5):
+      <div class="playerScore">You:
+        <span class="playerScoreNumber">0</span>
+      </div>
+      <div class="computerScore">Computer:
+        <span class="computerScoreNumber">0</span>
+      </div>
     </div>
-    <div class="computerScore">Computer:
-      <span class="computerScoreNumber">0</span>
+
+    <button class="playerchoice" id="rock">ROCK</button>
+    <button class="playerchoice" id="paper">PAPER</button>
+    <button class="playerchoice" id="scissors">SCISSORS</button>
+
+    <div class="matchoutcome"></div>
+
+    <button class="playagainbtn">Play again?</button>
+
+    <div class="resultscontainer">ROUND RESULTS:
+      <ol class="resultslist"></ol>
     </div>
   </div>
 
 
-  <button class="playerchoice" id="rock">ROCK</button>
-  <button class="playerchoice" id="paper">PAPER</button>
-  <button class="playerchoice" id="scissors">SCISSORS</button>
-
-  <div class="matchoutcome"></div>
-
-  <button class="playagainbtn">Play again?</button>
-
-  <div class="resultscontainer">ROUND RESULTS:
-    <ol class="resultslist"></ol>
+  <!-- right half -->
+  <div class="matchhistorycontainer">MATCH HISTORY:
+    <ul class="matchhistorylist"></ul>
   </div>
-
-
-
-  <div class="matchhistory">MATCH HISTORY:</div>
 
   <script>
 
@@ -48,7 +51,8 @@
     const matchOutcome = document.querySelector('.matchoutcome');
     const playAgainBtn = document.querySelector('.playagainbtn');
     const playerChoices = document.querySelectorAll('.playerchoice');
-    const matchHistory = document.querySelector('.matchhistory');
+    const matchHistoryContainer = document.querySelector('.matchhistorycontainer');
+    const matchHistoryList =  document.querySelector('.matchhistorylist');
 
     let playerScore = 0;
     let computerScore = 0;
@@ -69,6 +73,9 @@
           matchOutcome.textContent = `Victory! You win ${playerScore} to ${computerScore}!`
           playAgainBtn.style.visibility = 'visible';
           playerChoices.forEach((choice) => choice.disabled = true);
+          let match = document.createElement('li');
+          match.textContent = `Victory ${playerScore} to ${computerScore}`;
+          matchHistoryList.appendChild(match);
         }
       } else if (result.textContent.includes('lost')) {
         computerScore++;
@@ -77,6 +84,9 @@
           matchOutcome.textContent = `Defeat! You lose ${computerScore} to ${playerScore}!`
           playAgainBtn.style.visibility = 'visible';
           playerChoices.forEach((choice) => choice.disabled = true);
+          let match = document.createElement('li');
+          match.textContent = `Defeat ${computerScore} to ${playerScore}`;
+          matchHistoryList.appendChild(match);
         }
       }
       resultsList.appendChild(result);
@@ -154,12 +164,6 @@
 
 
 
-
-
-
-    if (playerScore > 4 || computerScore > 4) {
-      playAgainBtn.style.visibility = 'visible';
-    }
 
 
 
