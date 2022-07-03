@@ -75,6 +75,14 @@ html, body {
   font-weight: 900;
 }
 
+.playerScore {
+  color: rgb(79, 172, 230);
+}
+
+.computerScore {
+  color: rgb(255, 61, 61);
+}
+
 .buttonsrow {
   margin-top: 20px;
   display: flex;
@@ -91,7 +99,13 @@ html, body {
 
 .playerchoice:enabled {
   color:aliceblue;
-  background-color: rgb(126, 38, 38);
+  background-color: rgb(131, 54, 54);
+}
+
+.playerchoice:hover:not([disabled]) {
+  box-shadow: 0 5px 15px rgba(131, 54, 54, .4);
+  background-color: rgba(131, 54, 54, 0.80);
+  color: rgba(240, 248, 255, 0.8);
 }
 
 
@@ -111,6 +125,10 @@ html, body {
 
 .resultstitle {
   font-size: 20px;
+}
+
+.resultslist {
+  color: rgba(240, 248, 255, 0.75);
 }
 
 .matchhistorycontainer {
@@ -141,6 +159,7 @@ ul {
   flex-direction: column-reverse;
   align-items: flex-start;
   gap: 10px;
+  color: rgba(240, 248, 255, 0.75);
 }
 
 .matchoutcome {
